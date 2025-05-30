@@ -18,18 +18,29 @@ int main() {
     cout << "Total de elementos: " << contar(listaA) << endl;
 	cout << "Total de elementos: " << contar(listaB) << endl;
 
+	// 1. Exibir as duas listas
 	exibir(listaA, listaB);
 
-	/*cout << "\nLista A sem pares: " << endl;
-    removerPares(listaA);
-    exibir(listaA);*/
+	// 2. Remover os números pares da lista A
+	cout << "\nLista A sem pares: " << endl;
+    //removerPares(listaA); //TODO: Fix bug primeiro elemento par!!!
+    exibir(listaA);
 
+	// 3. Unir as duas listas
 	cout << "\nLista A unida com B: " << endl;
-    Lista* novaLista = unir(listaA, listaB);
-    exibir(novaLista);
+    Lista* listaAB = unir(listaA, listaB);
+    exibir(listaAB);
+
+	// 4. Ordenar a lista unida
+	cout << "\nLista A unida com B ordenada: " << endl;
+	ordenar(listaAB);
+	exibir(listaAB);
+
+	// 5. Remover toda a lista unida
+	cout << "\Removendo lista A unida com B..." << endl;
+	remover(listaAB);
 
     return 1;
 }
-
 
 

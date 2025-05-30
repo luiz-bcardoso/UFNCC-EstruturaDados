@@ -26,7 +26,7 @@ Lista* inserir(int dado, Lista* lista) {
 
 void exibir(Lista* lista) {
     if (lista) {
-        cout << lista->dado << endl;
+        cout << "A/B: " << lista->dado << endl;
         exibir(lista->prox);
     }
 }
@@ -51,6 +51,13 @@ int contar(Lista* lista) {
         return 1 + contar(lista->prox);
     }
     return 0;
+}
+
+Lista* remover(Lista* lista) {
+	if (!lista) return NULL;
+	Lista* temp = lista->prox;
+	free(lista);               
+	return remover(temp);
 }
 
 Lista* removerPares(Lista* lista) {
@@ -89,4 +96,27 @@ Lista* unir(Lista* listaA, Lista* listaB) {
     }
 
     return novaLista;
+}
+
+//Faça um método que receba o resultado da união da lista1 com a lista2 e aplique um método de ordenação
+void ordenar(Lista* listaAB) {
+    //bubble sort using recursion
+	if (!listaAB || !listaAB->prox) {
+		return; // Lista vazia ou com apenas um elemento
+	}
+	bool trocou;
+	do {
+		trocou = false;
+		Lista* atual = listaAB;
+		while (atual->prox) {
+			if (atual->dado > atual->prox->dado) {
+				// Troca os valores
+				int temp = atual->dado;
+				atual->dado = atual->prox->dado;
+				atual->prox->dado = temp;
+				trocou = true;
+			}
+			atual = atual->prox;
+		}
+	} while (trocou);
 }
